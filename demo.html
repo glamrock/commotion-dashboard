@@ -1,10 +1,44 @@
 <html>
     <head><title>monitoring script demo</title>
     <link rel="stylesheet" href="jstable.css">
-    <script src="parse.js"></script>
+    <!-- <script src="parse.js"></script> -->
     <script src="jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+        function anima(json) {
+            var table = "<table><tr>";
+            $.each(json.results[0], function(key, value) {
+                table += "<th>" + key + "</th>";
+            });
+            table += "</tr>";
+            $.each(json.results, function(key, value) {
+                table += "<tr>";
+                $.each(value, function(k, v) {
+                    table += "<td>" + v + "</td>";
+                });
+                table += "</tr>";
+            });
+            table += "</table>";
+            return table;
+            }
+            
+            $(function() {
+            
+            $.getJSON("demo.json", function(data) {
+                    $("#table").append(anima(data));
+                });
+            
+            //pull from jsoninfo (demo is twitter json)
+            //    $.getJSON("http://search.twitter.com/search.json?callback=?&rpp=5&q=from:abditum", function(data) {
+            //        $("#table").append(anima(data));
+            //    });
+    
+        });
+            
+        
+    </script>
+    
     </head>
-    <body>
+    <body onload="anima()">
     <div id="table" />
     </body>
 </html>

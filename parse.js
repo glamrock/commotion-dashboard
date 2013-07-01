@@ -1,4 +1,4 @@
-function createTableFromJson(json) {
+function anima(json) {
     var table = "<table><tr>";
     $.each(json.results[0], function(key, value) {
         table += "<th>" + key + "</th>";
@@ -18,12 +18,12 @@ function createTableFromJson(json) {
 $(function() {
 
 $.getJSON("demo.json", function(data) {
-        $("#table").append(createTableFromJson(data));
+        $("#table").append(anima(data));
     });
 
 //pull from jsoninfo (demo is twitter json)
 //    $.getJSON("http://search.twitter.com/search.json?callback=?&rpp=5&q=from:abditum", function(data) {
-//        $("#table").append(createTableFromJson(data));
+//        $("#table").append(anima(data));
 //    });
 
 
