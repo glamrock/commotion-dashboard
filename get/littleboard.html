@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<title>FFS, LittleBoard</title>
+
+		<script src="http://code.jquery.com/jquery-1.8.3.js" />
+		<!--<script type="text/javascript" src="derp.js" />
+		<script type="text/javascript" src="herp.js /> -->
+
+		<script type="text/javascript">
+
+$(document).ready(function () {
+
+$.getJSON('http://cryptic.be/bb/demo.json', function (data) {
+var items = [];
+
+$.each(data, function (key, val) {
+items.push('<li id="' + key + '"><strong>' + key + ':</strong>' + val + '</li>');
+});
+
+$('<ul/>', {
+'class': 'lblist',
+html: items.join('')
+})/*.appendTo('body');*/document.getElementById("littleboard").appendChild(data);
+
+});
+
+});
+		</script>
+
+	</head>
+<body>
+
+	<!-- this is where the magic happens -->
+	<div id="littleboard></div>
+
+
+</body>
+</html>
